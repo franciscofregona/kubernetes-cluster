@@ -1,5 +1,5 @@
 # Kubernetes cluster
-A vagrant script for setting up a Kubernetes cluster using Kubeadm
+A vagrant script for setting up a Kubernetes cluster using Kubeadm on Vagrant.
 
 ## Pre-requisites
 
@@ -16,7 +16,7 @@ vagrant up
 
 You can also start invidual machines by vagrant up k8s-head, vagrant up k8s-node-1 and vagrant up k8s-node-2
 
-If more than two nodes are required, you can edit the servers array in the Vagrantfile
+If more than two nodes are required, you can edit the servers array in the Vagrantfile and add, for example:
 
 ```
 servers = [
