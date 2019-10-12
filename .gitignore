@@ -1,1 +1,8 @@
 .vagrant/
+aptcache/k8s-head/*
+aptcache/k8s-node-1/*
+aptcache/k8s-node-2/*
+! aptcache/k8s-head/.gitadd
+! aptcache/k8s-node-1/.gitadd
+! aptcache/k8s-node-2/.gitadd
+ubuntu-xenial-16.04-cloudimg-console.log

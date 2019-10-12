@@ -86,7 +86,7 @@ $configureMaster = <<-SCRIPT
     export KUBECONFIG=/etc/kubernetes/admin.conf
     kubectl apply -f https://raw.githubusercontent.com/ecomm-integration-ballerina/kubernetes-cluster/master/calico/rbac-kdd.yaml
     kubectl apply -f https://raw.githubusercontent.com/ecomm-integration-ballerina/kubernetes-cluster/master/calico/calico.yaml
-
+    kubectl apply -f https://docs.projectcalico.org/v3.9/manifests/calico.yaml
     kubeadm token create --print-join-command >> /etc/kubeadm_join_cmd.sh
     chmod +x /etc/kubeadm_join_cmd.sh
 
@@ -129,8 +129,12 @@ Vagrant.configure("2") do |config|
 
             if opts[:type] == "master"
                 config.vm.provision "shell", inline: $configureMaster
+                config.vm.synced_folder "aptcache/" + opts[:name], "/var/cache/apt/archives"
+                # config.vm.synced_folder "varlibdocker/" + opts[:name], "/var/lib/docker"
+
             else
                 config.vm.provision "shell", inline: $configureNode
+                # config.vm.synced_folder "varlibdocker/" + opts[:name], "/var/lib/docker"
             end
 
         end
